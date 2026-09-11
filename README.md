@@ -341,7 +341,7 @@ Recommended presentation order: `normal -> ddos_attack -> cascading_failure`.
 pip install -r requirements.txt
 
 # Launch the interactive dashboard
-streamlit run app.py
+python -m streamlit run app.py
 
 # Or run headless validation against ground truth
 python3 validate.py
