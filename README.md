@@ -1,4 +1,5 @@
 # NetSage 🌐
+> 🔗 **Live Demo:** [Launch NetSage](https://netsage-jxerrqvha8pmdt5c9mtyum.streamlit.app/)
 
 A prototype that transforms raw network telemetry into an explainable incident
 report, using topology-aware root-cause reasoning and signature-based security
