@@ -13,7 +13,7 @@ from report import build_report
 
 st.set_page_config(page_title="Network Intelligence System", layout="wide")
 
-st.title("🧠 Network Intelligence System")
+st.title("🌐 NetSage")
 st.caption("Telemetry → Anomaly Detection → Root-Cause Analysis → Security Assessment → Incident Report")
 
 # ---------------- Sidebar controls ----------------
