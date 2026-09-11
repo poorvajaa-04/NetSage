@@ -22,13 +22,13 @@ with st.sidebar:
     scenario = st.selectbox(
         "Scenario", SCENARIOS,
         format_func=lambda s: s.replace("_", " ").title(),
-        index=1,
+        index=0,
     )
     seed = st.number_input("Random seed", min_value=0, max_value=9999, value=42, step=1)
     n_steps = st.slider("Time steps", 60, 200, 120, step=10)
     anomaly_start = st.slider("Anomaly onset (t)", 10, 150, 70, step=5)
     anomaly_len = st.slider("Anomaly duration (steps)", 5, 60, 30, step=5)
-    run = st.button("▶ Run Analysis", type="primary", use_container_width=True)
+    run = st.button("▶ Run Analysis", type="primary", width="stretch")
     st.markdown("---")
     st.caption(
         "Scenarios ending in *_attack / port_scan are labeled security in the "
@@ -103,7 +103,7 @@ with left:
     fig = go.Figure(data=[edge_trace, node_trace])
     fig.update_layout(showlegend=False, height=420, margin=dict(l=10, r=10, t=10, b=10),
                        xaxis=dict(visible=False), yaxis=dict(visible=False))
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
     st.caption("🔴 Root cause &nbsp;&nbsp; 🟠 Affected &nbsp;&nbsp; 🟢 Normal")
 
 # ---------------- Root cause candidate ranking ----------------
@@ -112,7 +112,7 @@ with right:
     if not rc_result["candidates"].empty:
         show_cols = ["device", "onset_time", "temporal_score", "causal_score",
                      "explain_score", "severity_score", "composite_score"]
-        st.dataframe(rc_result["candidates"][show_cols], use_container_width=True, hide_index=True)
+        st.dataframe(rc_result["candidates"][show_cols], width="stretch", hide_index=True)
     else:
         st.info("No anomalies detected -- nothing to rank.")
 
@@ -134,10 +134,10 @@ if sel_metrics:
     for _, ev in dev_events.iterrows():
         fig2.add_vrect(x0=ev.onset_time, x1=ev.end_time, fillcolor="red", opacity=0.12, line_width=0)
     fig2.update_layout(height=380)
-    st.plotly_chart(fig2, use_container_width=True)
+    st.plotly_chart(fig2, width="stretch")
 
 with st.expander("Show all detected anomaly events (raw table)"):
-    st.dataframe(events, use_container_width=True, hide_index=True)
+    st.dataframe(events, width="stretch", hide_index=True)
 
 st.markdown("---")
 
